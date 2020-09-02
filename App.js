@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { StyleSheet, Text, View,  } from 'react-native';
+import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import ReadScreen from './screens/ReadScreen.js';
 import WriteScreen from './screens/WriteScreen.js';
@@ -20,7 +20,11 @@ const TabNavigator = createBottomTabNavigator({
   Write: {screen: WriteScreen},
 });
 
-const AppContainer =  createAppContainer(TabNavigator);
+const SwitchNavigator= createSwitchNavigator({
+  LoginScreen:{screen: LoginScreen},
+  TabNavigator:{screen: TabNavigator},
+})
+const AppContainer =  createAppContainer(SwitchNavigator);
 
 const styles = StyleSheet.create({
   container: {
@@ -30,3 +34,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
